@@ -2,9 +2,51 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 
+struct ShaderSource
+{
+	std::string VertexSource;
+	std::string FragmentSource;
+};
+/*get shader source from file*/
+static ShaderSource ParseShader(const std::string& filePath)
+{
+	std::ifstream stream(filePath);
+	std::string line;
 
-static unsigned int compilerShader(unsigned int type, const std::string& shaderSource)
+	enum class ShaderType : int8_t
+	{
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
+
+	ShaderType type = ShaderType::NONE;
+	std::stringstream ss[2];
+
+	while (getline(stream, line))
+	{
+		if (line.find("#shader") != std::string::npos)
+		{
+			if (line.find("vertex") != std::string::npos)
+			{
+				type = ShaderType::VERTEX;
+			}
+			else if (line.find("fragment") != std::string::npos)
+			{
+				type = ShaderType::FRAGMENT;
+			}
+		}
+		else
+		{
+			ss[(int)type] << line << '\n';
+		}
+	}
+
+	return {ss[0].str(), ss[1].str()};
+}
+
+static unsigned int CompilerShader(unsigned int type, const std::string& shaderSource)
 {
 	unsigned int id = 0;
 	id = glCreateShader(type);
@@ -22,6 +64,7 @@ static unsigned int compilerShader(unsigned int type, const std::string& shaderS
 		glGetShaderInfoLog(id, length, nullptr, log);
 		std::cout << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader error:";
 		std::cout << log << std::endl;
+		glDeleteShader(id);
 	}
 	return id;
 }
@@ -29,8 +72,8 @@ static unsigned int compilerShader(unsigned int type, const std::string& shaderS
 
 static unsigned int CreateShaderProgream(const std::string& VertexSource, const std::string& FrgamentShader)
 {
-	unsigned int vs = compilerShader(GL_VERTEX_SHADER, VertexSource);
-	unsigned int fs = compilerShader(GL_FRAGMENT_SHADER, FrgamentShader);
+	unsigned int vs = CompilerShader(GL_VERTEX_SHADER, VertexSource);
+	unsigned int fs = CompilerShader(GL_FRAGMENT_SHADER, FrgamentShader);
 
 	unsigned int progream = glCreateProgram();
 	glAttachShader(progream, vs);
@@ -73,26 +116,8 @@ int main(void)
 		0.5f , -0.5f
 	};
 
-	const std::string vertexSource =
-		"#version 330 core\n"
-		" layout(location = 0) in vec4 position;\n"
-		" void main()\n"
-		"{\n"
-		"gl_Position = position; \n"
-		"}\n";
-
-	const std::string frgamentSource =
-		"#version 330 core\n"
-		" out vec4 color;\n"
-		" void main()\n"
-		"{\n"
-		" color = vec4(1.0, 0.0, 0.0, 1.0) \n"
-		"}\n";
-
-
-
-
-	unsigned int progream = CreateShaderProgream(vertexSource, frgamentSource);
+	ShaderSource source = ParseShader("res/shaders/Basics.shader");
+	unsigned int progream = CreateShaderProgream(source.VertexSource, source.FragmentSource);
 	glUseProgram(progream);
 
 	unsigned int VBO;
