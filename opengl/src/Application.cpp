@@ -5,6 +5,28 @@
 #include <fstream>
 #include <sstream>
 
+#define ASSERT(x) if(!(x)) __debugbreak();
+#define GLCall(x) GLClearError(); \
+					x; \
+					ASSERT(GLLogCall(#x, __LINE__))
+
+/*在获取任意错误码前清除之前的错误码*/
+static void GLClearError()
+{
+	while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall(const char* function, int line)
+{
+	while (GLenum error = glGetError())
+	{
+		std::cout << "[OpenGL error]"<< "(" <<error << ")" <<" "
+			<<"func:"<<function<<" "<<"line:"<<line<<std::endl;
+		return false;
+	}
+	return true;
+}
+
 struct ShaderSource
 {
 	std::string VertexSource;
@@ -103,6 +125,8 @@ int main(void)
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
+	/*修改刷新间隔*/
+	glfwSwapInterval(1);
 
 	if (glewInit() != GLEW_OK)
 	{
@@ -112,8 +136,16 @@ int main(void)
 	float vertices[] =
 	{
 		-0.5f, -0.5f,
-		0.0f , 0.5f,
-		0.5f , -0.5f
+		0.5f, -0.5f,
+		0.5f, 0.5f,
+		-0.5f, 0.5f
+	};
+
+	/*unsigned int 是opengl要求索引缓冲区设定，否则无法绘制*/
+	unsigned int indices[] =
+	{
+		0, 1, 2,
+		2, 3, 0
 	};
 
 	ShaderSource source = ParseShader("res/shaders/Basics.shader");
@@ -128,13 +160,21 @@ int main(void)
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (void*)0);
 	glEnableVertexAttribArray(0);
 
+	unsigned int IBO;
+	glGenBuffers(1, &IBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	int location = glGetUniformLocation(progream, "u_Color");
+
+	float r = 0.0f;
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
-		
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		GLCall(glUniform4f(location, rand()%10/10.0f, 0.2, 0.3, 0.1));
+		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
