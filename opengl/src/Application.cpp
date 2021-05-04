@@ -10,86 +10,8 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "VertexBufferLayout.h"
+#include "Shader.h"
 
-struct ShaderSource
-{
-	std::string VertexSource;
-	std::string FragmentSource;
-};
-/*get shader source from file*/
-static ShaderSource ParseShader(const std::string& filePath)
-{
-	std::ifstream stream(filePath);
-	std::string line;
-
-	enum class ShaderType : int8_t
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-
-	ShaderType type = ShaderType::NONE;
-	std::stringstream ss[2];
-
-	while (getline(stream, line))
-	{
-		if (line.find("#shader") != std::string::npos)
-		{
-			if (line.find("vertex") != std::string::npos)
-			{
-				type = ShaderType::VERTEX;
-			}
-			else if (line.find("fragment") != std::string::npos)
-			{
-				type = ShaderType::FRAGMENT;
-			}
-		}
-		else
-		{
-			ss[(int)type] << line << '\n';
-		}
-	}
-
-	return {ss[0].str(), ss[1].str()};
-}
-
-static unsigned int CompilerShader(unsigned int type, const std::string& shaderSource)
-{
-	unsigned int id = 0;
-	id = glCreateShader(type);
-	const char* src = shaderSource.c_str();
-	glShaderSource(id, 1, &src, nullptr);
-	glCompileShader(id);
-	
-	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-	if (!result)
-	{
-		int length = 0;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-		char* log = (char*)alloca(sizeof(char)* length);
-		glGetShaderInfoLog(id, length, nullptr, log);
-		std::cout << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader error:";
-		std::cout << log << std::endl;
-		glDeleteShader(id);
-	}
-	return id;
-}
-
-
-static unsigned int CreateShaderProgream(const std::string& VertexSource, const std::string& FrgamentShader)
-{
-	unsigned int vs = CompilerShader(GL_VERTEX_SHADER, VertexSource);
-	unsigned int fs = CompilerShader(GL_FRAGMENT_SHADER, FrgamentShader);
-
-	unsigned int progream = glCreateProgram();
-	glAttachShader(progream, vs);
-	glAttachShader(progream, fs);
-	glLinkProgram(progream);
-	
-	glDeleteShader(vs);
-	glDeleteShader(fs);
-	return progream;
-}
 
 int main(void)
 {
@@ -114,7 +36,7 @@ int main(void)
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 	/*ÐÞ¸ÄË¢ÐÂ¼ä¸ô*/
-	glfwSwapInterval(1);
+	glfwSwapInterval(5);
 
 	if (glewInit() != GLEW_OK)
 	{
@@ -147,24 +69,25 @@ int main(void)
 
 		IndexBuffer ib(indices, 6);
 
-		ShaderSource source = ParseShader("res/shaders/Basics.shader");
-		unsigned int progream = CreateShaderProgream(source.VertexSource, source.FragmentSource);
+		Shader shader("res/shaders/Basics.shader");
+		shader.Bind();
 
-		int location = glGetUniformLocation(progream, "u_Color");
 		float r = 0.0f;
 
-		glUseProgram(0);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
+		shader.UnBind();
+		vb.UnBind();
+		ib.UnBind();
+		va.UnBind();
 
 		/* Loop until the user closes the window */
 		while (!glfwWindowShouldClose(window))
 		{
 			/* Render here */
 			glClear(GL_COLOR_BUFFER_BIT);
-			glUseProgram(progream);
-			GLCall(glUniform4f(location, rand() % 10 / 10.0f, 0.2, 0.3, 0.1));
+			
+			shader.Bind();
+			glm::vec4 color = glm::vec4(rand() % 10 / 10.0f, 0.2, 0.3, 0.1);
+			shader.SetUniform4f("u_Color", color);
 			
 			va.Bind();
 			ib.Bind();
