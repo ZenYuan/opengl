@@ -1,5 +1,4 @@
-#include <GL/glew.h>
-#include <iostream>
+#include "common.h"
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -108,6 +107,16 @@ void Shader::UnBind() const
 void Shader::SetUniform4f(const std::string& name, glm::vec4& vec)
 {
 	GLCall(glUniform4f(GetUniformLocation(name), vec.r, vec.g, vec.b, vec.a));
+}
+
+void Shader::SetUniformi(const std::string& name, int slot)
+{
+	GLCall(glUniform1i(GetUniformLocation(name), slot));
+}
+
+void Shader::SetUniformMatrix4f(const std::string& name, glm::mat4& mat4)
+{
+	glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &mat4[0][0]);
 }
 
 int Shader::GetUniformLocation(const std::string& name)

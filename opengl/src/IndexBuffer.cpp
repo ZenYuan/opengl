@@ -1,5 +1,5 @@
 #include "IndexBuffer.h"
-#include "GL/glew.h"
+#include "common.h"
 #include "Render.h"
 
 IndexBuffer::IndexBuffer(const void* data, unsigned int count):

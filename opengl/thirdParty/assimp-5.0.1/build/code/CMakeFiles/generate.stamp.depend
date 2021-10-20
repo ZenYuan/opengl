@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+D:/Cmake/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake
+D:/Cmake/share/cmake-3.21/Modules/FindPackageMessage.cmake
+F:/Project/code/CG/opengl/opengl/thirdParty/assimp-5.0.1/cmake-modules/FindRT.cmake
+F:/Project/code/CG/opengl/opengl/thirdParty/assimp-5.0.1/code/CMakeLists.txt
