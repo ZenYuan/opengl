@@ -13,8 +13,18 @@ bool GLLogCall(const char* function, int line);
 class VertexArray;
 class IndexBuffer;
 class Shader;
+enum class DrawType: uint8_t
+{
+	INDEX = 0,
+	ARRAY = 1,
+};
+
 class Render
 {
 public:
-	void Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
+	Render(unsigned int count = 0) :m_count(count) {}
+	void Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader, DrawType drawType) const;
+	void setFaceNum(unsigned int count) { m_count = count; }
+private:
+	unsigned int m_count;
 };

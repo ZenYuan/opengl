@@ -21,11 +21,20 @@ bool GLLogCall(const char* function, int line)
 	return true;
 }
 
-void Render::Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const
+void Render::Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader, DrawType drawType) const
 {
-	glClear(GL_COLOR_BUFFER_BIT);
 	va.Bind();
-	ib.Bind();
 	shader.Bind();
-	GLCall(glDrawElements(GL_TRIANGLES, ib.getCount(), GL_UNSIGNED_INT, nullptr));
+	if (DrawType::INDEX == drawType)
+	{
+		ib.Bind();
+		GLCall(glDrawElements(GL_TRIANGLES, ib.getCount(), GL_UNSIGNED_INT, nullptr));
+		ib.UnBind();
+	}
+	else if(DrawType::ARRAY == drawType)
+	{
+		GLCall(glDrawArrays(GL_TRIANGLES, 0, m_count));
+	}
+	va.UnBind();
 }
+

@@ -22,9 +22,10 @@
 
 extern GLFWwindow* CreateWindow(int SwapInterval);
 
+#if 0
 int main(void)
 {
-	GLFWwindow* window = CreateWindow(100);
+	GLFWwindow* window = CreateWindow(1);
 	assert(window != nullptr);
 
 	if (glewInit() != GLEW_OK)
@@ -96,6 +97,8 @@ int main(void)
 			//gl render
 			render.Renderprocess(va, ib, shader);
 
+
+
 			//set imgui window
 			{
 				ImGui::SliderFloat3("translation", &translation[0], -30.0f, 30.0f);
@@ -120,3 +123,4 @@ int main(void)
 	glfwTerminate();
 	return 0;
 }
+#endif
