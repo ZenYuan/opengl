@@ -19,6 +19,9 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
+#include "Test.h"
+#include "TestClearColor.h"
+
 #define GLSL_VERSION "#version 330"
 
 static GLFWwindow* window;
@@ -71,48 +74,15 @@ int main(void)
 		std::cout << "error" << std::endl;
 	}
 
-	float vertices[] =
-	{
-		-0.5f, -0.5f, 0.0f, 0.0f,
-		0.5f, -0.5f, 1.0f, 0.0f,
-		0.5f, 0.5f, 1.0f, 1.0f,
-		-0.5f, 0.5f, 0.0f, 1.0f
-	};
 
-	/*unsigned int 是opengl要求索引缓冲区设定，否则无法绘制*/
-	unsigned int indices[] =
-	{
-		0, 1, 2,
-		2, 3, 0
-	};
+	test::Test* currentTest = nullptr;
+	test::TestMenu* testMenu = new test::TestMenu(currentTest);
+	currentTest = testMenu;
 
-	//glm::mat4 trans = glm::ortho();
+	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 
 	//scope 方便释放资源
 	{
-		//保存vertex Attribute,无需每次渲染切换layout;
-		VertexArray va;
-		VertexBuffer vb(vertices, 4 * 4 * sizeof(float));
-		VertexBufferLayout layout;
-		layout.Push<float>(2);   //positon
-		layout.Push<float>(2);   //texture
-		va.AddBuffer(vb, layout);
-
-		IndexBuffer ib(indices, 6);
-		Shader shader("res/shaders/Basics.shader");
-
-		glm::mat4 proj = glm::ortho(-4.0f, 4.0f, -3.0f, 3.0f, 1.0f, -1.0f);
-		Texture texture0("res/image/awesomeface.png");
-		Texture texture1("res/image/killeroo-simple.jpg");
-
-
-		shader.UnBind();
-		vb.UnBind();
-		ib.UnBind();
-		va.UnBind();
-
-		Render render;
-
 		/* Loop until the user closes the window */
 		while (!glfwWindowShouldClose(window))
 		{
@@ -121,22 +91,19 @@ int main(void)
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
-			// 1. Show the big demo window
-			bool show_demo_window = true;
-			ImGui::ShowDemoWindow(&show_demo_window);
+			if (currentTest) 
+			{
+				currentTest->OnUpdate(0.0f);
+				currentTest->OnRender();
 
-
-			/* Render here */
-			shader.Bind();
-			texture0.Bind();
-			shader.SetUniformi("texSampler0", 0);
-			texture1.Bind(1);
-			shader.SetUniformi("texSampler1", 1);
-
-			/*MVP*/
-			shader.SetUniformMatrix4f("u_mvp", proj);
-
-			render.Renderprocess(va, ib, shader);
+				ImGui::Begin("Test");
+				if (currentTest != testMenu && ImGui::Button("<-")) {
+					delete currentTest;
+					currentTest = testMenu;
+				}
+				currentTest->OnImGuiRender();
+				ImGui::End();
+			}
 
 			/*Rendering*/
 			ImGui::Render();

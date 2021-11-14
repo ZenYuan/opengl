@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Lib\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Lib\include;E:\CG\openGL\opengl_02\opengl\opengl\res\third\imgui;E:\CG\openGL\opengl_02\opengl\opengl\res\third\stb_imgae;E:\CG\openGL\opengl_02\opengl\opengl\src\test;E:\CG\openGL\opengl_02\opengl\opengl\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,10 +145,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="res\third\imgui\imgui.cpp" />
+    <ClCompile Include="res\third\imgui\imgui_demo.cpp" />
+    <ClCompile Include="res\third\imgui\imgui_draw.cpp" />
+    <ClCompile Include="res\third\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="res\third\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="res\third\imgui\imgui_tables.cpp" />
+    <ClCompile Include="res\third\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="res\third\stb_imgae\stb_image.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Render.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\test\Test.cpp" />
+    <ClCompile Include="src\test\TestClearColor.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBufferLayout.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
@@ -157,9 +168,22 @@
     <None Include="res\shaders\Basics.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="res\third\imgui\imconfig.h" />
+    <ClInclude Include="res\third\imgui\imgui.h" />
+    <ClInclude Include="res\third\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="res\third\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="res\third\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="res\third\imgui\imgui_internal.h" />
+    <ClInclude Include="res\third\imgui\imstb_rectpack.h" />
+    <ClInclude Include="res\third\imgui\imstb_textedit.h" />
+    <ClInclude Include="res\third\imgui\imstb_truetype.h" />
+    <ClInclude Include="res\third\stb_imgae\stb_image.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Render.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\test\Test.h" />
+    <ClInclude Include="src\test\TestClearColor.h" />
+    <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\VertexBuffer.h" />
     <ClInclude Include="src\VertexBufferLayout.h" />
