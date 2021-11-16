@@ -16,5 +16,5 @@ class Shader;
 class Render
 {
 public:
-	void Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
+	static void Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader);
 };

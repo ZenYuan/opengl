@@ -22,7 +22,7 @@ bool GLLogCall(const char* function, int line)
 	return true;
 }
 
-void Render::Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const
+void Render::Renderprocess(const VertexArray& va, const IndexBuffer& ib, const Shader& shader)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	va.Bind();

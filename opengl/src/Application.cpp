@@ -21,6 +21,7 @@
 
 #include "Test.h"
 #include "TestClearColor.h"
+#include "TestBatch.h"
 
 #define GLSL_VERSION "#version 330"
 
@@ -48,6 +49,7 @@ bool CreateWindow(int SwapInterval)
 	glfwMakeContextCurrent(window);
 	/*修改刷新间隔*/
 	glfwSwapInterval(SwapInterval);
+
 
 	/*imgui context*/
 	IMGUI_CHECKVERSION();
@@ -80,6 +82,7 @@ int main(void)
 	currentTest = testMenu;
 
 	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
+	testMenu->RegisterTest<test::TestBatch>("testBatch");
 
 	//scope 方便释放资源
 	{
