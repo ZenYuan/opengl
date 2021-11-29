@@ -95,7 +95,7 @@ int main(void)
 			shader.SetUniformMatrix4f("u_mvp", transform);
 
 			//gl render
-			render.Renderprocess(va, ib, shader);
+			//render.Renderprocess(va, ib, shader);
 
 
 

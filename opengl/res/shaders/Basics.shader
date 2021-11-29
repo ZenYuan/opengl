@@ -23,6 +23,7 @@ in vec2 u_TexCoords;
 void main()
 {
 	//vec4 texColor = mix(texture(texSampler0, u_TexCoords), texture(texSampler1, u_TexCoords), 0.3);
+
 	vec4 texColor = vec4(0.04, 0.28, 0.26, 1.0);
 	if (1 == outline)
 	{
@@ -31,6 +32,10 @@ void main()
 	else if (2 == outline)
 	{
 		texColor = texture(texSampler0, u_TexCoords);
+	}
+	else if (3 == outline)
+	{
+		texColor = vec4(1.0, 0.0, 0.0, 1.0);
 	}
 	gl_FragColor = texColor;
 };

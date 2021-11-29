@@ -22,7 +22,7 @@
 
 extern GLFWwindow* CreateWindow(int SwapInterval);
 
-int main2(void)
+int main3(void)
 {
 	GLFWwindow* window = CreateWindow(5);
 	assert(window != nullptr);
@@ -106,22 +106,20 @@ int main2(void)
 		plane_layout.Push<float>(2);   //texture
 		plane_va.AddBuffer(plane_vb, plane_layout);
 
+
+		//将属性按顺序加入
+		//grassCube_layout.Push<float>(3);   //positon
+		//grassCube_layout.Push<float>(2);   //texture
+		//plane_va.AddBuffer(grassCube_vb, grassCube_layout);
+
 		Texture plane_texture("../res/image/metal.png");     //plane
 		Texture cube_texture("../res/image/marble.jpg");    //continer
-
-		/*启用模板测试*/
-		glEnable(GL_STENCIL_TEST);
-
-		//如何修改模板缓存
-		//比较函数，参考值，mask
-		glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-		//模板测试通过，深度测试失败，深度测试通过或者未开启3种情况下的模板值写入方式；
-		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+		//Texture cube_texture("../res/image/grass.png");    //grass
 
 		glEnable(GL_DEPTH_TEST);
 		glDepthMask(GL_TRUE);
 
-		Shader shader("../res/shaders/Basics.shader");
+		Shader shader("../res/shaders/depth.shader");
 		shader.UnBind();
 		cube_vb.UnBind();
 		cube_va.UnBind();
@@ -138,7 +136,7 @@ int main2(void)
 		{
 
 			GLCall(glClearColor(0.1f, 0.1f, 0.1f, 1.0f));
-			GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
+			GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
 			imgui.start();
 
@@ -150,64 +148,16 @@ int main2(void)
 			glm::mat4 transform = projection * view * model;
 			shader.SetUniformMatrix4f("u_mvp", transform);
 
-			glDepthFunc(GL_LESS);
-			/*first step*/
-			//模板开启写入，写入值用参考值替换
-			glStencilMask(0xFF);
-			//开启模板测试,cube的所有片元都通过
-			glStencilFunc(GL_ALWAYS, 1, 0xFF);
 			//cube1
 			model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
 			transform = projection * view * model;
 			shader.SetUniformMatrix4f("u_mvp", transform);
-
 			render.setFaceNum(36);
-			cube_texture.Bind(0);
-			shader.SetUniformi("texSampler0", 0);
-			shader.SetUniformi("outline", 2);
-			render.Renderprocess(cube_va, IndexBuffer(nullptr, 0), shader, DrawType::ARRAY);
-
-			/*second step*/
-			//模板禁止写入，开启模板测试
-			glStencilMask(0xFF);
-			glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-			model = glm::scale(model, glm::vec3(1.1f, 1.1f, 1.1f));
-			transform = projection * view * model;
-			shader.SetUniformMatrix4f("u_mvp", transform);
-
-			render.setFaceNum(36);
-			cube_texture.Bind(0);
-			shader.SetUniformi("texSampler0", 0);
-			shader.SetUniformi("outline", 1);
 			render.Renderprocess(cube_va, IndexBuffer(nullptr, 0), shader, DrawType::ARRAY);
 
 			//plane
-			//开启物体光栅化方式，GL_LINE GL_POINT, GL_FILL
-			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-			//开启多边形偏移（不同的光栅化方式有不同的深度计算方式），防止z-fighting
-			glEnable(GL_POLYGON_OFFSET_LINE);
-			glPolygonOffset(0.0, 1.0);
-			
-			glStencilMask(0x00);
-			glStencilFunc(GL_ALWAYS, 1, 0xFF);
 			render.setFaceNum(6);
-			plane_texture.Bind(0);
-			shader.SetUniformi("texSampler0", 0);
-			shader.SetUniformi("outline", 3);
 			render.Renderprocess(plane_va, IndexBuffer(nullptr, 0), shader, DrawType::ARRAY);
-
-			//openGl状态机，需要在开启该功能的物体绘制完成后关闭该功能；
-			//否者循环会一直开启
-			glDisable(GL_POLYGON_OFFSET_LINE);
-
-			//亮边
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-			render.setFaceNum(6);
-			plane_texture.Bind(0);
-			shader.SetUniformi("texSampler0", 0);
-			shader.SetUniformi("outline", 2);
-			render.Renderprocess(plane_va, IndexBuffer(nullptr, 0), shader, DrawType::ARRAY);
-			
 
 			//set imgui window
 			{
@@ -219,8 +169,6 @@ int main2(void)
 
 			//imgui render
 			imgui.render();
-
-			glStencilMask(0xFF);
 
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
