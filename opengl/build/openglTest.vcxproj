@@ -315,6 +315,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="..\test\depth.cpp" />
     <ClCompile Include="..\test\frameBuffer.cpp" />
+    <ClCompile Include="..\test\shadowMap.cpp" />
     <ClCompile Include="..\test\stencil_test.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\Application.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\IndexBuffer.cpp" />

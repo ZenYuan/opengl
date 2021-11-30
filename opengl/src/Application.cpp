@@ -12,7 +12,7 @@ GLFWwindow* CreateWindow(int SwapInterval)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
-	GLFWwindow* window = glfwCreateWindow(1920, 1080, "Hello World", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "Hello World", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();

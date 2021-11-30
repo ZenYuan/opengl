@@ -19,7 +19,8 @@ public:
 	void UnBind() const;
 
 	/*set uniform*/
-	void SetUniform4f(const std::string& name, glm::vec4& vec);
+	void SetUniform4f(const std::string& name, const glm::vec4& vec);
+	void SetUniform3f(const std::string& name, const glm::vec3& vec);
 	void SetUniformi(const std::string& name, int slot);
 	void SetUniformMatrix4f(const std::string& name, glm::mat4& mat4);
 private:
