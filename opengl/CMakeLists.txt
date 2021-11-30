@@ -13,12 +13,14 @@ file(GLOB_RECURSE src_opengl_core
 #test
 file(GLOB_RECURSE src_test_core
 ./test/*.cpp
+./test/test/*.cpp
 ./test/*.h
 )
 
 #head
 file(GLOB_RECURSE head_opengl
 ./include/*.h
+./test/test/*.h
 )
 
 #res
@@ -46,6 +48,7 @@ add_definitions()
 include_directories(
 ./include
 ./test
+./test/test
 ./thirdParty/imgui/include
 ./thirdParty/stb_imgae
 ./thirdParty/Lib/include

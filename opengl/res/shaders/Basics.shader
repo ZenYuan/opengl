@@ -15,13 +15,17 @@ void main()
 #version 330 core
 
 out vec4 color;
+<<<<<<< HEAD
 uniform int outline;
+=======
+>>>>>>> 8cc362033c1201b93fdaf2d42711cc2ffae08462
 uniform sampler2D texSampler0;
 uniform sampler2D texSampler1;
 in vec2 u_TexCoords;
 
 void main()
 {
+<<<<<<< HEAD
 	//vec4 texColor = mix(texture(texSampler0, u_TexCoords), texture(texSampler1, u_TexCoords), 0.3);
 
 	vec4 texColor = vec4(0.04, 0.28, 0.26, 1.0);
@@ -38,6 +42,10 @@ void main()
 		texColor = vec4(1.0, 0.0, 0.0, 1.0);
 	}
 	gl_FragColor = texColor;
+=======
+	vec4 texColor = mix(texture(texSampler0, u_TexCoords), texture(texSampler1, u_TexCoords), 0.3);
+	color = texColor;
+>>>>>>> 8cc362033c1201b93fdaf2d42711cc2ffae08462
 };
 
 

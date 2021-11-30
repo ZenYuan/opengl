@@ -22,7 +22,7 @@
 
 extern GLFWwindow* CreateWindow(int SwapInterval);
 
-int main(void)
+int main5(void)
 {
 	GLFWwindow* window = CreateWindow(5);
 	assert(window != nullptr);

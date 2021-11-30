@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -103,10 +103,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -146,10 +146,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -172,7 +172,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -189,10 +189,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -215,7 +215,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -231,10 +231,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Project\code\CG\opengl\opengl\.\include;F:\Project\code\CG\opengl\opengl\.\test;F:\Project\code\CG\opengl\opengl\.\test\test;F:\Project\code\CG\opengl\opengl\.\thirdParty\imgui\include;F:\Project\code\CG\opengl\opengl\.\thirdParty\stb_imgae;F:\Project\code\CG\opengl\opengl\.\thirdParty\Lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -313,10 +313,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\test\depth.cpp" />
-    <ClCompile Include="..\test\frameBuffer.cpp" />
-    <ClCompile Include="..\test\shadowMap.cpp" />
-    <ClCompile Include="..\test\stencil_test.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\Application.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\IndexBuffer.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\Render.cpp" />
@@ -327,8 +323,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\VertexBufferLayout.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\imguicfg.cpp" />
     <ClCompile Include="F:\Project\code\CG\opengl\opengl\src\mesh.cpp" />
-    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\test.cpp" />
-    <ClInclude Include="..\include\mesh.h" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\depth.cpp" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\frameBuffer.cpp" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\shadowMap.cpp" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\stencil_test.cpp" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\test\Test.cpp" />
+    <ClInclude Include="F:\Project\code\CG\opengl\opengl\test\test\Test.h" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\test\TestBatch.cpp" />
+    <ClInclude Include="F:\Project\code\CG\opengl\opengl\test\test\TestBatch.h" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\test\TestClearColor.cpp" />
+    <ClInclude Include="F:\Project\code\CG\opengl\opengl\test\test\TestClearColor.h" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\testmain.cpp" />
+    <ClCompile Include="F:\Project\code\CG\opengl\opengl\test\transpancy.cpp" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\IndexBuffer.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\Render.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\Shader.h" />
@@ -338,6 +344,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\VertexBufferLayout.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\common.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\imguicfg.h" />
+    <ClInclude Include="F:\Project\code\CG\opengl\opengl\include\mesh.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\thirdParty\imgui\include\imconfig.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\thirdParty\imgui\include\imgui.h" />
     <ClInclude Include="F:\Project\code\CG\opengl\opengl\thirdParty\imgui\include\imgui_impl_glfw.h" />

@@ -13,10 +13,10 @@ bool GLLogCall(const char* function, int line);
 class VertexArray;
 class IndexBuffer;
 class Shader;
-enum class DrawType: uint8_t
+enum class DrawType
 {
 	INDEX = 0,
-	ARRAY = 1,
+	ARRAY = 1
 };
 
 class Render
